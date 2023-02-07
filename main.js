@@ -10,11 +10,11 @@ function getComputerChoice(){
 
     return(choice[randomNumber]);
 }
-
+// Rock Beats Scissors , Scissors beats Paper , Paper beats Rock.
 //Function to mimic single round of play and give text out-put of results
 function playRound(playerSelection, computerSelection){
 
-   if(playerSelection == computerSelection){
+    if(playerSelection == computerSelection){
    drawScore++;
    return("It's a Draw.!");
 }else if(playerSelection == "Rock" && computerSelection == "Scissors"){
@@ -45,11 +45,20 @@ function game(){
     console.log(playRound(answer, getComputerChoice())); 
     }  
 }
+//Function & IF statements to determine the winner
+function winner(){
+
+    if(playerScore + drawScore == computerScore + drawScore){
+        alert('Damm.. it was a draw !!!');
+}else if(playerScore + drawScore > computerScore + drawScore){
+        alert('You are the Winner!!')
+}else if(computerScore + drawScore > playerScore + drawScore){
+        alert('The Computer Won!!')
+}
+}
 
 game();
 
 console.log('This is your Score:' + playerScore);
 console.log('This is the Computer Score:' + computerScore);
-//console.log(drawScore);
-
-  
+winner();
