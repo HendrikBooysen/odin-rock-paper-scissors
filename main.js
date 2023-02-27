@@ -2,6 +2,11 @@ let playerScore = 0;
 let computerScore = 0;
 let drawScore = 0;
 
+// Ref  for  DOM body 
+const body = document.querySelector('body');
+
+div4.textContent = computerScore;
+
 //Function to random return choice in array to mimic Computer playing
 function getComputerChoice(){
 
@@ -37,14 +42,7 @@ function playRound(playerSelection, computerSelection){
     return("You lose! Paper beats Rock.!");
 }
 }
-// Function with a FOR LOOP to mimic the 5 rounds of a game 
-function game(){
-
-    for(let i = 1; i <= 5; i++){
-    let answer = (prompt("Please pick Rock / Paper / Scissors: "));
-    console.log(playRound(answer, getComputerChoice())); 
-    }  
-}
+/*
 //Function & IF statements to determine the winner
 function winner(){
 
@@ -57,8 +55,5 @@ function winner(){
 }
 }
 
-game();
-
-console.log('This is your Score:' + playerScore);
-console.log('This is the Computer Score:' + computerScore);
 winner();
+*/

@@ -1,0 +1,27 @@
+.resultDiv{
+    width: 400px;
+    height: 100px;
+    border: 5px solid  black;
+    margin-bottom: 20px;
+}
+
+.playerScoreDiv{
+    width: 150px;
+    height: 150px;
+    border: 5px solid  black;
+    margin-top: 20px;
+}
+
+.computerScoreDiv{
+    width: 150px;
+    height: 150px;
+    border: 5px solid  black;
+    margin-top: 20px;
+}
+
+.winnerDiv{
+    width: 150px;
+    height: 150px;
+    border: 5px solid  black;
+    margin-top: 20px;
+}
