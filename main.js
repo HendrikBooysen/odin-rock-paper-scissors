@@ -18,11 +18,13 @@ body.insertBefore(div2, div1);
 //Create DIV to display Player Score
 const div3 = document.createElement('div');
 div3.classList.add('playerScoreDiv');
+
 body.appendChild(div3);
 
 //Create DIV to display Computer Score
 const div4 = document.createElement('div');
 div4.classList.add('playerScoreDiv');
+
 body.appendChild(div4);
 
 //Create DIV to display Player Score
@@ -54,8 +56,9 @@ div1.appendChild(buttonScissors);
 
 // Mimics a round of play player VS computer Rock button 
 buttonRock.addEventListener('click', () =>{
-    winner();
-    return(playRound("Rock", getComputerChoice()));
+    (playRound("Rock", getComputerChoice()));
+    return winner();
+    
 } );
 // Mimics a round of play player VS computer Paper button
 buttonPaper.addEventListener('click', () =>{
@@ -89,29 +92,41 @@ function playRound(playerSelection, computerSelection){
 }else if(playerSelection == "Rock" && computerSelection == "Scissors"){
     playerScore++;
     div2.textContent = "Computer lose! Rock beats Scissors.!";
-    div3.textContent = playerScore;
+    
+    
 }else if(playerSelection == "Scissors" && computerSelection == "Paper"){
     playerScore++;
     div2.textContent = "Computer lose! Scissors beats Paper.!";
-    div3.textContent = playerScore;
+    
+    
 }else if(playerSelection == "Paper" && computerSelection == "Rock"){
     playerScore++;
     div2.textContent = "Computer lose! Paper beats Rock.!";
-    div3.textContent = playerScore;
+    
+    
 }else if(computerSelection == "Rock" && playerSelection == "Scissors"){
     computerScore++;
     div2.textContent = "You Lose! Rock beats Scissors.!";
-    div4.textContent = computerScore;
+    
+    
 }else if(computerSelection == "Scissors" && playerSelection == "Paper"){
     computerScore++;
     div2.textContent = "You lose! Scissors beats Paper.!";
-    div4.textContent = computerScore;
+      
 }else if(computerSelection == "Paper" && playerSelection == "Rock"){
     computerScore++;
     div2.textContent = "You lose! Paper beats Rock.!";
-    div4.textContent = computerScore;
+    
+    
 }
+
+div3.textContent = playerScore;
+div4.textContent = computerScore;
 }
+
+
+
+
 
 //Function & IF statements to determine the winner
 function winner(){
