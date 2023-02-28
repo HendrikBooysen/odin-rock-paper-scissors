@@ -1,11 +1,11 @@
 let playerScore = 0;
 let computerScore = 0;
-let drawScore = 0;
+//let drawScore = 0;
 
 // Ref  for  DOM body 
 const body = document.querySelector('body');
 
-//Create button DIV and class for DIV
+//Create buttons DIV 
 const div1 = document.createElement('div');
 div1.classList.add('buttonDiv');
 body.appendChild(div1);
@@ -19,6 +19,16 @@ body.insertBefore(div2, div1);
 const div3 = document.createElement('div');
 div3.classList.add('playerScoreDiv');
 body.appendChild(div3);
+
+//Create DIV to display Computer Score
+const div4 = document.createElement('div');
+div4.classList.add('playerScoreDiv');
+body.appendChild(div4);
+
+//Create DIV to display Player Score
+const div5 = document.createElement('div');
+div5.classList.add('winnerDiv');
+body.appendChild(div5);
 
 
 // Create button for Rock 
@@ -40,15 +50,26 @@ buttonScissors.classList.add('buttonScissors');
 buttonScissors.textContent = 'Scissors';
 div1.appendChild(buttonScissors);
 
-//Create DIV to display Computer Score
-const div4 = document.createElement('div');
-div4.classList.add('playerScoreDiv');
-body.appendChild(div4);
+
+
+// Mimics a round of play player VS computer Rock button 
+buttonRock.addEventListener('click', () =>{
+    winner();
+    return(playRound("Rock", getComputerChoice()));
+} );
+// Mimics a round of play player VS computer Paper button
+buttonPaper.addEventListener('click', () =>{
+    winner();
+    return(playRound("Paper", getComputerChoice()));
+} );
+// Mimics a round of play player VS computer Scissors button 
+buttonScissors.addEventListener('click', () =>{
+    winner();
+    return(playRound("Scissors", getComputerChoice()));
+} );
 
 
 
-
-//div4.textContent = computerScore;
 
 //Function to random return choice in array to mimic Computer playing
 function getComputerChoice(){
@@ -63,40 +84,44 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
 
     if(playerSelection == computerSelection){
-   drawScore++;
-   return("It's a Draw.!");
+    drawScore++;
+    div2.textContent = "It's a Draw.!";
 }else if(playerSelection == "Rock" && computerSelection == "Scissors"){
     playerScore++;
-    return("Computer lose! Rock beats Scissors.!");
+    div2.textContent = "Computer lose! Rock beats Scissors.!";
+    div3.textContent = playerScore;
 }else if(playerSelection == "Scissors" && computerSelection == "Paper"){
     playerScore++;
-    return("Computer lose! Scissors beats Paper.!");
+    div2.textContent = "Computer lose! Scissors beats Paper.!";
+    div3.textContent = playerScore;
 }else if(playerSelection == "Paper" && computerSelection == "Rock"){
     playerScore++;
-    return("Computer lose! Paper beats Rock.!");
+    div2.textContent = "Computer lose! Paper beats Rock.!";
+    div3.textContent = playerScore;
 }else if(computerSelection == "Rock" && playerSelection == "Scissors"){
     computerScore++;
-    return("You Lose! Rock beats Scissors.!");
+    div2.textContent = "You Lose! Rock beats Scissors.!";
+    div4.textContent = computerScore;
 }else if(computerSelection == "Scissors" && playerSelection == "Paper"){
     computerScore++;
-    return("You lose! Scissors beats Paper.!");
+    div2.textContent = "You lose! Scissors beats Paper.!";
+    div4.textContent = computerScore;
 }else if(computerSelection == "Paper" && playerSelection == "Rock"){
     computerScore++;
-    return("You lose! Paper beats Rock.!");
+    div2.textContent = "You lose! Paper beats Rock.!";
+    div4.textContent = computerScore;
 }
 }
-/*
+
 //Function & IF statements to determine the winner
 function winner(){
 
-    if(playerScore + drawScore == computerScore + drawScore){
-        alert('Damm.. it was a draw !!!');
-}else if(playerScore + drawScore > computerScore + drawScore){
-        alert('You are the Winner!!')
-}else if(computerScore + drawScore > playerScore + drawScore){
-        alert('The Computer Won!!')
-}
+    if(playerScore == 5){
+       div5.textContent = " You are the Winner!!!";
+    }else if(computerScore == 5){
+       div5.textContent = " The computer is the Winner!!!";  
+    }
 }
 
-winner();
-*/
+
+
