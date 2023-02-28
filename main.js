@@ -5,7 +5,50 @@ let drawScore = 0;
 // Ref  for  DOM body 
 const body = document.querySelector('body');
 
-div4.textContent = computerScore;
+//Create button DIV and class for DIV
+const div1 = document.createElement('div');
+div1.classList.add('buttonDiv');
+body.appendChild(div1);
+
+//Create DIV to display each round results
+const div2 = document.createElement('div');
+div2.classList.add('resultDiv');
+body.insertBefore(div2, div1);
+
+//Create DIV to display Player Score
+const div3 = document.createElement('div');
+div3.classList.add('playerScoreDiv');
+body.appendChild(div3);
+
+
+// Create button for Rock 
+const buttonRock = document.createElement('button');
+buttonRock.classList.add('buttonRock');
+buttonRock.textContent = 'Rock';
+div1.appendChild(buttonRock);
+
+// Create button for Paper 
+const buttonPaper = document.createElement('button');
+buttonPaper.classList.add('buttonPaper');
+buttonPaper.textContent = 'Paper';
+div1.appendChild(buttonPaper);
+
+
+// Create button for Scissors 
+const buttonScissors = document.createElement('button');
+buttonScissors.classList.add('buttonScissors');
+buttonScissors.textContent = 'Scissors';
+div1.appendChild(buttonScissors);
+
+//Create DIV to display Computer Score
+const div4 = document.createElement('div');
+div4.classList.add('playerScoreDiv');
+body.appendChild(div4);
+
+
+
+
+//div4.textContent = computerScore;
 
 //Function to random return choice in array to mimic Computer playing
 function getComputerChoice(){
