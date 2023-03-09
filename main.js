@@ -2,6 +2,8 @@ let playerScore = 0;
 let computerScore = 0;
 //let drawScore = 0;
 
+
+
 // Ref  for  DOM body 
 const body = document.querySelector('body');
 
@@ -15,23 +17,45 @@ const div2 = document.createElement('div');
 div2.classList.add('resultDiv');
 body.insertBefore(div2, div1);
 
+// Create Header for Winner of each round DIV
+const header4 = document.createElement('h1');
+header4.classList.add('header2');
+header4.textContent = "Per Round Winner:";
+body.insertBefore(header4, div2);
+
+
 //Create DIV to display Player Score
 const div3 = document.createElement('div');
 div3.classList.add('playerScoreDiv');
-
 body.appendChild(div3);
+
+// Create Header for player scoreDIV
+const header1 = document.createElement('h1');
+header1.classList.add('header1');
+header1.textContent = "Player Score";
+body.insertBefore(header1, div3);
 
 //Create DIV to display Computer Score
 const div4 = document.createElement('div');
-div4.classList.add('playerScoreDiv');
-
+div4.classList.add('computerScoreDiv');
 body.appendChild(div4);
 
-//Create DIV to display Player Score
+// Create Header for computer score DIV
+const header2 = document.createElement('h1');
+header2.classList.add('header2');
+header2.textContent = "Computer Score";
+body.insertBefore(header2, div4);
+
+//Create DIV to display Winner
 const div5 = document.createElement('div');
 div5.classList.add('winnerDiv');
 body.appendChild(div5);
 
+// Create Header for Winner DIV
+const header3 = document.createElement('h1');
+header3.classList.add('header3');
+header3.textContent = "Over all Winner is:";
+body.insertBefore(header3, div5);
 
 // Create button for Rock 
 const buttonRock = document.createElement('button');
@@ -52,27 +76,32 @@ buttonScissors.classList.add('buttonScissors');
 buttonScissors.textContent = 'Scissors';
 div1.appendChild(buttonScissors);
 
-
-
 // Mimics a round of play player VS computer Rock button 
 buttonRock.addEventListener('click', () =>{
-    (playRound("Rock", getComputerChoice()));
-    return winner();
+    playRound("Rock", getComputerChoice());
+    winner();
     
 } );
 // Mimics a round of play player VS computer Paper button
 buttonPaper.addEventListener('click', () =>{
+    playRound("Paper", getComputerChoice());
     winner();
-    return(playRound("Paper", getComputerChoice()));
 } );
 // Mimics a round of play player VS computer Scissors button 
 buttonScissors.addEventListener('click', () =>{
+    playRound("Scissors", getComputerChoice());
     winner();
-    return(playRound("Scissors", getComputerChoice()));
 } );
 
+//Function & IF statements to determine the winner
+function winner(){
 
-
+    if(playerScore == 5){
+       div5.textContent = " You are the Winner!!!";
+    }else if(computerScore == 5){
+       div5.textContent = " The computer is the Winner!!!";  
+    }
+}
 
 //Function to random return choice in array to mimic Computer playing
 function getComputerChoice(){
@@ -87,56 +116,49 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
 
     if(playerSelection == computerSelection){
-    drawScore++;
     div2.textContent = "It's a Draw.!";
 }else if(playerSelection == "Rock" && computerSelection == "Scissors"){
     playerScore++;
-    div2.textContent = "Computer lose! Rock beats Scissors.!";
-    
+    div3.textContent = playerScore;
+    div2.textContent = "Computer lose! Rock beats Scissors.!" ;
     
 }else if(playerSelection == "Scissors" && computerSelection == "Paper"){
     playerScore++;
+    div3.textContent = playerScore;
     div2.textContent = "Computer lose! Scissors beats Paper.!";
-    
     
 }else if(playerSelection == "Paper" && computerSelection == "Rock"){
     playerScore++;
+    div3.textContent = playerScore;
     div2.textContent = "Computer lose! Paper beats Rock.!";
-    
     
 }else if(computerSelection == "Rock" && playerSelection == "Scissors"){
     computerScore++;
+    div4.textContent = computerScore;
     div2.textContent = "You Lose! Rock beats Scissors.!";
-    
     
 }else if(computerSelection == "Scissors" && playerSelection == "Paper"){
     computerScore++;
-    div2.textContent = "You lose! Scissors beats Paper.!";
-      
+    div4.textContent = computerScore;
+    div2.textContent = "You lose! Scissors beats Paper.!"; 
+
 }else if(computerSelection == "Paper" && playerSelection == "Rock"){
     computerScore++;
+    div4.textContent = computerScore;
     div2.textContent = "You lose! Paper beats Rock.!";
     
-    
-}
-
-div3.textContent = playerScore;
-div4.textContent = computerScore;
 }
 
 
-
-
-
-//Function & IF statements to determine the winner
-function winner(){
-
-    if(playerScore == 5){
-       div5.textContent = " You are the Winner!!!";
-    }else if(computerScore == 5){
-       div5.textContent = " The computer is the Winner!!!";  
-    }
 }
+
+
+
+
+
+
+
+
 
 
 
