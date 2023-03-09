@@ -150,7 +150,7 @@ function playRound(playerSelection, computerSelection){
 }
 
 
-}
+};
 
 
 
